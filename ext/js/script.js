@@ -8,15 +8,70 @@ const start_nos_step = 20;
 
 // Triggers when all DOM elements are loaded
 document.addEventListener('DOMContentLoaded', function(event) {
-	// Attaches listener for click event on extract  button
-	document.querySelector('#extractBtn').addEventListener('click', function(e) {
-        const url = chrome.runtime.getURL('biz_categories.txt');
 
-    fetch(url)
-        .then((response) => response.text()) //assuming file contains json
-        .then((biz_categories) => openBizCategoriesListingsPages(biz_categories));
-    });
+        // Attaches listener for click event on extract  button
+        document.querySelector('#extractBtn').addEventListener('click', function(e) {
+            alert('daddy yoo')
+            const url = chrome.runtime.getURL('biz_categories.txt');
+            
+        fetch(url)
+            .then((response) => response.text()) //assuming file contains json
+            .then((biz_categories) => openBizCategoriesListingsPages(biz_categories));
+        });
+
+    
+
+ 
+	// // Attaches listener for click event on extract  button
+	// document.querySelector('#extractPagesBtn').addEventListener('click', function(e) {
+
+
+
+    //     function openBizCategoriesListingsPages(biz_categories) {
+    //         alert('party categories');
+    //         const biz_listings_pages_links = document.querySelectorAll('.fl');
+    //         var biz_listings_pages_links_arr = Array.from(biz_listings_pages_links);
+        
+    //         console.log(biz_listings_pages_links, biz_listings_pages_links_arr)
+        
+    //         const biz_listings_pages_links = document.querySelectorAll('.fl');
+    //         for (let index = 0; index < biz_listings_pages_links_arr.length; i++) {
+    //             const link = biz_listings_pages_links_arr[i];
+                
+    //             console.log("url "+link.href);
+    //             chrome.tabs.create({ url: link.href });
+    //             window.open(url, '_blank').focus();
+    //         }
+
+    //         return 'yooooo';
+        
+        
+    //     }
+
+
+
+
+    //         //We have permission to access the activeTab, so we can call chrome.tabs.executeScript:
+    //         chrome.tabs.executeScript({
+    //             code: '(' + openBizCategoriesListingsPages + ')();' //argument here is a string but function.toString() returns function's code
+    //         }, (results) => {
+    //             //Here we have just the innerHTML and not DOM structure
+    //             console.log('Popup script:')
+    //             console.log(results[0]);
+    //         });
+    // });
+
+
+
+    
 });
+
+
+
+
+
+
+
 
 function openBizCategoriesListingsPages(biz_categories) {
     const biz_categories_arr = biz_categories.split("\n");

@@ -1,6 +1,6 @@
 <!doctype html>
 <script src="/js/jquery-3.6.0.min.js" ></script>
-<script type = "text/javascript" src = "/js/script.js"></script>
+<script type = "text/javascript" src = "/js/script.js" defer></script>
 <style type="text/css">
 	#mainPopup {
 		padding: 10px;
@@ -16,4 +16,16 @@
 <div id="mainPopup">
 <h1>GMB biz extractor</h1>
 <p><button id="extractBtn">Extract</button></p>
+<p><button id="extractPagesBtn">Extract form all pages</button></p>
+
+<pre>
+	const biz_listings_pages_links_arr = Array.from(document.querySelectorAll('.fl'));
+	for (let i = 0; i < biz_listings_pages_links_arr.length; i++) {
+		const link = biz_listings_pages_links_arr[i];
+		
+		link.onclick='window.open(link.href,"_blank");return false;'
+		link.click();
+		
+	}
+</pre>
 </div>

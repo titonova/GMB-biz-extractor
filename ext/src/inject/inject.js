@@ -16,6 +16,10 @@ function extractBizDataFromCurrentPage() {
 	alert('extracting');
 }
 
+
+
+
+
 chrome.extension.sendMessage({}, function(response) {
 	var readyStateCheckInterval = setInterval(function() {
 	if (document.readyState === "complete") {
@@ -62,16 +66,26 @@ chrome.extension.sendMessage({}, function(response) {
 
 			var details_children  = all_bizs_details[i].children;
 			console.log(details_children);
-
+ 
 			var biz_data = {};
+
+
+			const search_input_value = document.getElementById('lst-ib')?.value;
+
+			if(search_input_value){
+				biz_data.category = search_input_value.split('near me')[0].trim();
+			}
 
 			biz_data.name = details_children[0].innerText;
 
 			biz_data_ratings = details_children[1].innerText.match(/\d+\.\d+|\d+\b|\d+(?=\w)/g)
 															?.map(function (v) {return +v;});;
-			biz_data.avg_rating = biz_data_ratings[0] ?? null;
-			biz_data.total_ratings = biz_data_ratings[1] ?? null;
 
+
+			if(biz_data_ratings !== undefined ){
+				biz_data.avg_rating = biz_data_ratings[0];
+				biz_data.total_ratings = biz_data_ratings[1];
+			}
 			biz_data_years_in_business_and_address = details_children[2].innerText.split('·');
 
 			biz_data_years_in_business_and_address.forEach(element => {
@@ -85,18 +99,20 @@ chrome.extension.sendMessage({}, function(response) {
 
 			});
 
-			biz_data_opening_time_and_phone_number = details_children[3].innerText.split('·');
+			if(details_children[3] != undefined){
+				biz_data_opening_time_and_phone_number = details_children[3].innerText.split('·');
 
-			biz_data_opening_time_and_phone_number.forEach(element => {
+				biz_data_opening_time_and_phone_number.forEach(element => {
 
-				if(/^\d+$/.test(element.replace(/\s/g, ''))) {
-					biz_data.phone_number = element.trim();
-				}
-				else{
-					biz_data.opening_time = element.trim();
-				}
+					if(/^\d+$/.test(element.replace(/\s/g, ''))) {
+						biz_data.phone_number = element.trim();
+					}
+					else{
+						biz_data.opening_time = element.trim();
+					}
 
-			});
+				});
+			}
 
 			$.post("http://localhost/add-extracted-biz",biz_data,
 			function(data, status){
