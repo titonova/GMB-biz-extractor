@@ -1,4 +1,8 @@
-const  url_to_biz_category_listing_template = "https://www.google.com/search?q={biz_category}+near+me&start_no={start_no}&cs=1&sz=0&tbm=lcl&sxsrf=ALiCzsZ0ffriVCR6P8GxJz0JoNlI4CO1_w%3A1655978990670&ei=7ju0YsfAKJCNlwS45IuICg&oq={biz_category}+near+me&gs_l=psy-ab.3...0.0.0.99354.0.0.0.0.0.0.0.0..0.0....0...1..64.psy-ab..0.0.0....0.0Vct90Kc1jw#rlfi=hd:;si:;mv:[[6.565004699999999,3.3996589999999998],[6.493752799999999,3.3486640999999997]];tbs:lrf:!1m4!1u3!2m2!3m1!1e1!2m1!1e3,lf:1";
+//const  url_to_biz_category_listing_template = "https://www.google.com/search?q={biz_category}+near+me&start_no={start_no}&cs=1&sz=0&tbm=lcl&sxsrf=ALiCzsZ0ffriVCR6P8GxJz0JoNlI4CO1_w%3A1655978990670&ei=7ju0YsfAKJCNlwS45IuICg&oq={biz_category}+near+me&gs_l=psy-ab.3...0.0.0.99354.0.0.0.0.0.0.0.0..0.0....0...1..64.psy-ab..0.0.0....0.0Vct90Kc1jw#rlfi=hd:;si:;mv:[[6.565004699999999,3.3996589999999998],[6.493752799999999,3.3486640999999997]];tbs:lrf:!1m4!1u3!2m2!3m1!1e1!2m1!1e3,lf:1";
+
+
+const  url_to_biz_category_listing_template = "https://www.google.com/search?q={biz_category}+near+me&cs=1&sz=0&tbm=lcl&sxsrf=ALiCzsbaW97mRVQfVyLAGhyUMBkuIFfPZw%3A1656104224071&ei=ICW2YqmDBI2_lwSusJ74CQ&oq=barbing+salons+near+me&gs_l=psy-ab.3...0.0.0.39034.0.0.0.0.0.0.0.0..0.0....0...1..64.psy-ab..0.0.0....0.xxpqhyiS5NI#rlfi=hd:;si:;mv:[[6.5855816,3.3996589999999998],[6.4925881,3.3486640999999997]];tbs:lrf:!1m4!1u3!2m2!3m1!1e1!1m4!1u2!2m2!2m1!1e1!2m1!1e2!2m1!1e3,lf:1";
+
 const init_start_no =20;
 const end_start_no  = 40;
 const start_nos_step = 20;

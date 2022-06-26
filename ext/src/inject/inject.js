@@ -17,7 +17,7 @@ function extractBizDataFromCurrentPage() {
 }
 
 
-
+const extractor = 'Tito';
 
 
 chrome.extension.sendMessage({}, function(response) {
@@ -75,9 +75,12 @@ chrome.extension.sendMessage({}, function(response) {
 			if(search_input_value){
 				biz_data.category = search_input_value.split('near me')[0].trim();
 			}
+			else{
+				biz_data.category = null;
+			}
 
 			biz_data.name = details_children[0].innerText;
-
+			biz_data.extractor = extractor;
 			biz_data_ratings = details_children[1].innerText.match(/\d+\.\d+|\d+\b|\d+(?=\w)/g)
 															?.map(function (v) {return +v;});;
 
@@ -114,6 +117,7 @@ chrome.extension.sendMessage({}, function(response) {
 				});
 			}
 
+			alert('sfdsdf')
 			$.post("http://localhost/add-extracted-biz",biz_data,
 			function(data, status){
 				console.log("Response is \n")
